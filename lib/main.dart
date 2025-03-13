@@ -1,5 +1,6 @@
 
 
+import 'package:bite_saver/pages/Pop_Page.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -8,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home:HomeUI(),
+        home:Pop(),
       debugShowCheckedModeBanner: false,
     );
   }
