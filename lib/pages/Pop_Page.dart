@@ -17,9 +17,9 @@ class _PopState extends State<Pop> {
   @override
   void initState(){
     super.initState();
-
+    Pop_Up();
     Future.delayed(Duration(seconds:4 ), (){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeUI()),
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LogIn()),
       );
     });
   }

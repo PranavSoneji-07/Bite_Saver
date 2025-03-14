@@ -1,40 +1,41 @@
-
-
 import 'package:flutter/material.dart';
 
+final username = TextEditingController();
+final password = TextEditingController();
 
 class Text_Field extends StatelessWidget {
-  Text_Field(TextEditingController controller){
-  TextField(
-  controller: controller,
-  decoration: InputDecoration(
-  hintText: "controller",
-  enabledBorder: OutlineInputBorder(
-  borderSide: BorderSide(width: 3),
-  borderRadius: BorderRadius.circular(5)
-  ),
-  focusedBorder: OutlineInputBorder(
-  borderSide: BorderSide(width: 5),
-  borderRadius: BorderRadius.circular(5)
-  ),
-  ),
-  );
-  }
-
+  final TextEditingController Control;
+  final text;
+  const Text_Field(this.Control, this.text, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return
+
+    TextField(
+      controller: Control,
+      decoration: InputDecoration(
+        contentPadding: EdgeInsets.only(top: 20, bottom: 20),
+      label: Align(
+        alignment: Alignment.center,
+        child: Text("$text"),
+      ),
+      labelStyle: TextStyle(fontSize: 20),
+
+      enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(20)
+      ),
+      focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(5)
+      ),
+      ),
+    );
+    }
   }
 
-}
 
 
-class HomeUI extends StatelessWidget {
-   HomeUI({super.key});
-
-  final username = TextEditingController();
-  final password = TextEditingController();
+class LogIn extends StatelessWidget {
+   LogIn({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,30 +43,30 @@ class HomeUI extends StatelessWidget {
     body: Container(
       width: double.infinity,
       height: double.infinity,
+      color: Colors.white,
+      
+      padding: EdgeInsets.only(top: 350),
 
       child: Center(
         child: Column(
-
           children: [
-            Text("Bite Saver"),
-            Text("Fresh. Cheap. Fast. Like your ex, but better"),
-            Text_Field(username),
+            Container(margin: EdgeInsets.all(5),
+              child: Text("Bite Saver", style: TextStyle(fontSize: 30),)),
+            Text("Fresh. Cheap. Fast. Like your ex, but better", style: TextStyle(fontSize: 20
+            ),),
+            Container(
+              margin: EdgeInsets.only(left: 50, right: 50, bottom: 20,top: 100),
+                height: 80,
+                child: Text_Field(username, "Username")),
+            Container(
+                margin: EdgeInsets.only(left: 50, right: 50, bottom: 20),
+                height: 80,
+                child: Text_Field(password, "Password")),
 
-            TextField(
-              controller: password,
-              decoration: InputDecoration(
-                hintText: "Password",
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(width: 3),
-                    borderRadius: BorderRadius.circular(5)
-                ),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(width: 5),
-                    borderRadius: BorderRadius.circular(5)
-                ),
-              ),
-            ),
+            ElevatedButton(onPressed: (){
 
+            }, child: Text("Log In")),
+            
 
           ],
         ),

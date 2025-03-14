@@ -13,8 +13,7 @@ class _Pop_UpState extends State<Pop_Up> {
     return Scaffold(
 
       body: Container(
-        width: double.infinity,
-        height: double.infinity,
+        padding: EdgeInsets.only(top:400),
         color: Colors.white,
       child: Center(
         child: Column(
