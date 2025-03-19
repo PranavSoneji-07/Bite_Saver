@@ -18,7 +18,7 @@ class _PopState extends State<Pop> {
   void initState(){
     super.initState();
     Pop_Up();
-    Future.delayed(Duration(seconds:4 ), (){
+    Future.delayed(Duration(seconds:5 ), (){
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LogIn()),
       );
     });

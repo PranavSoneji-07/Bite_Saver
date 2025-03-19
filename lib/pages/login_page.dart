@@ -1,3 +1,5 @@
+import 'package:bite_saver/pages/Home_Page.dart';
+import 'package:bite_saver/small%20components/login_logic.dart';
 import 'package:flutter/material.dart';
 
 final username = TextEditingController();
@@ -63,9 +65,17 @@ class LogIn extends StatelessWidget {
                 height: 80,
                 child: Text_Field(password, "Password")),
 
-            ElevatedButton(onPressed: (){
-
-            }, child: Text("Log In")),
+            Container(
+              width: 800,
+              padding: EdgeInsets.only(left: 100, right: 100, top: 15, bottom: 15),
+              child: ElevatedButton(onPressed: () async {
+                LoginLogic().fetchCredentials();
+                LoginLogic().checker();
+                if(LoginLogic().Checked == true){
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeUI()));
+              }
+              }, child: Text("Log In", style: TextStyle(fontSize: 20),)),
+            ),
             
 
           ],
