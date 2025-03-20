@@ -31,7 +31,7 @@ class _Pop_UpState extends State<Pop_Up> {
                 decoration: BoxDecoration(
                   color: Colors.grey,
                 ),
-                child: Image.asset("assets/download.gif", height: 200),
+                child: Image.asset('assets/', height: 200),
               ),
               Container(
                 margin: EdgeInsets.all(20),

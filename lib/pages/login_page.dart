@@ -1,5 +1,4 @@
 import 'package:bite_saver/pages/Home_Page.dart';
-import 'package:bite_saver/small%20components/login_logic.dart';
 import 'package:flutter/material.dart';
 
 final username = TextEditingController();
@@ -8,7 +7,7 @@ final password = TextEditingController();
 class Text_Field extends StatelessWidget {
   final TextEditingController Control;
   final text;
-  const Text_Field(this.Control, this.text, {Key? key}) : super(key: key);
+  const Text_Field(this.Control, this.text, {super.key});
   @override
   Widget build(BuildContext context) {
     return
@@ -37,7 +36,7 @@ class Text_Field extends StatelessWidget {
 
 
 class LogIn extends StatelessWidget {
-   LogIn({super.key});
+   const LogIn({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -68,12 +67,8 @@ class LogIn extends StatelessWidget {
             Container(
               width: 800,
               padding: EdgeInsets.only(left: 100, right: 100, top: 15, bottom: 15),
-              child: ElevatedButton(onPressed: () async {
-                LoginLogic().fetchCredentials();
-                LoginLogic().checker();
-                if(LoginLogic().Checked == true){
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeUI()));
-              }
+              child: ElevatedButton(onPressed: ()  {
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeUI()));
               }, child: Text("Log In", style: TextStyle(fontSize: 20),)),
             ),
             

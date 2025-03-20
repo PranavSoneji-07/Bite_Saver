@@ -4,13 +4,13 @@ import 'package:bite_saver/pages/login_page.dart' as input_data;
 
 
 class LoginLogic {
-  Map<String, String> _credentials = {};
+  final Map<String, String> _credentials = {};
   bool Checked = false;
 
 
   Future<void> fetchCredentials() async {
     try {
-      String data = await rootBundle.loadString('assets/usernames_password.txt');
+      String data = await rootBundle.loadString('assets/credentials.txt');
       Map<String, String> credentials = {};
       for (String line in data.split('\n')) {
         List<String> parts = line.split(':');
@@ -20,7 +20,7 @@ class LoginLogic {
       }
     }
     catch (e) {
-      debugPrint("Could not fetch");
+      debugPrint("$e");
     }
   }
 
@@ -34,7 +34,7 @@ class LoginLogic {
       Checked = true;
     }
     else {
-      debugPrint("Ye to galat bata hai");
+      debugPrint("Ye to galat baat hai");
     }
   }
 

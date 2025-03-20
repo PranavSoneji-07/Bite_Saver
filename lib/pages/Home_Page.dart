@@ -1,3 +1,4 @@
+import 'package:bite_saver/small%20components/Deals_Section.dart';
 import 'package:flutter/material.dart';
 import 'package:bite_saver/small components/Deals_Section_Title.dart';
 
@@ -53,32 +54,18 @@ class _HomeUIState extends State<HomeUI> {
 
 
 
-class TopDealsSection extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 150,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: 5, // Number of top deals
-        itemBuilder: (context, index) {
-          return TopDealItem(index: index);
-        },
-      ),
-    );
-  }
-}
+
 
 class TopDealItem extends StatelessWidget {
   final int index;
 
-  const TopDealItem({required this.index});
+  const TopDealItem({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.symmetric(horizontal: 8.0),
-      child: Container(
+      child: SizedBox(
         width: 120,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -110,7 +97,7 @@ class RestaurantsSection extends StatelessWidget {
 class RestaurantItem extends StatelessWidget {
   final int index;
 
-  RestaurantItem({required this.index});
+  const RestaurantItem({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {
