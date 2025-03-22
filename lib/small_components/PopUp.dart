@@ -1,5 +1,5 @@
+import 'package:bite_saver/small_components/Lines_Picker.dart';
 import 'package:flutter/material.dart';
-import 'package:bite_saver/small%20components/Lines_Picker.dart';
 
 class Pop_Up extends StatefulWidget {
   const Pop_Up({super.key});
@@ -31,7 +31,7 @@ class _Pop_UpState extends State<Pop_Up> {
                 decoration: BoxDecoration(
                   color: Colors.grey,
                 ),
-                child: Image.asset('assets/', height: 200),
+                child: Image.asset('assets/download.gif', height: 200),
               ),
               Container(
                 margin: EdgeInsets.all(20),

@@ -1,6 +1,7 @@
-import 'package:bite_saver/small%20components/Deals_Section.dart';
+import 'package:bite_saver/small_components/Deals/Deals_Section.dart';
+import 'package:bite_saver/small_components/Deals/Deals_Section_Title.dart';
+import 'package:bite_saver/small_components/Restaurant/Restaurant_Section.dart';
 import 'package:flutter/material.dart';
-import 'package:bite_saver/small components/Deals_Section_Title.dart';
 
 class HomeUI extends StatefulWidget {
   const HomeUI({super.key});
@@ -47,70 +48,6 @@ class _HomeUIState extends State<HomeUI> {
             RestaurantsSection(),
           ],
         ),
-      ),
-    );
-  }
-}
-
-
-
-
-
-class TopDealItem extends StatelessWidget {
-  final int index;
-
-  const TopDealItem({super.key, required this.index});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.symmetric(horizontal: 8.0),
-      child: SizedBox(
-        width: 120,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.local_offer, size: 50, color: Colors.orange),
-            SizedBox(height: 10),
-            Text('Deal ${index + 1}'),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class RestaurantsSection extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      itemCount: 10, // Number of restaurants
-      itemBuilder: (context, index) {
-        return RestaurantItem(index: index);
-      },
-    );
-  }
-}
-
-class RestaurantItem extends StatelessWidget {
-  final int index;
-
-  const RestaurantItem({super.key, required this.index});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      child: ListTile(
-        leading: Icon(Icons.restaurant, size: 50, color: Colors.orange),
-        title: Text('Restaurant ${index + 1}'),
-        subtitle: Text('Cuisine Type - \$ Price Range'),
-        trailing: Icon(Icons.arrow_forward_ios),
-        onTap: () {
-          // Navigate to restaurant details page
-        },
       ),
     );
   }

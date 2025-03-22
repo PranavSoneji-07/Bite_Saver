@@ -1,7 +1,7 @@
 
 
 import 'package:bite_saver/pages/login_page.dart';
-import 'package:bite_saver/small%20components/PopUp.dart';
+import 'package:bite_saver/small_components/PopUp.dart';
 import 'package:flutter/material.dart';
 
 
@@ -19,7 +19,7 @@ class _PopState extends State<Pop> {
     super.initState();
     Pop_Up();
     Future.delayed(Duration(seconds:5 ), (){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LogIn()),
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Log_In()),
       );
     });
   }
