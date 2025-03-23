@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 class SectionTitle extends StatelessWidget {
   final String title;
 
-  const SectionTitle({super.key, required this.title});
+  final Widget see;
+
+  const SectionTitle({super.key, required this.title, required this.see});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class SectionTitle extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              // Navigate to see all
+              Navigator.push(context, MaterialPageRoute(builder: (context) => see));
             },
             child: Text('See All'),
           ),

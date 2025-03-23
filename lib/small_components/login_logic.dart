@@ -38,6 +38,7 @@ class LoginLogic {
     }
     else {
       debugPrint("Ye to galat baat hai");
+      Text("Incorrect username or password", style: TextStyle(color: Colors.red),);
       debugPrint("username = $username, password = $password");
       debugPrint("From file = $_credentials");
     }

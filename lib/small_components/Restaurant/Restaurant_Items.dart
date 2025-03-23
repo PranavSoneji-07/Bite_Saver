@@ -1,58 +1,85 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:bite_saver/Provider/Restaurant_Provider.dart';
-class RestaurantItem extends StatelessWidget {
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+class RestaurantItem extends StatefulWidget {
   final int index;
 
   RestaurantItem({required this.index});
 
   @override
-  Widget build(BuildContext context) {
-    final provider = Provider.of<RestaurantsProvider>(context);
+  _RestaurantItemState createState() => _RestaurantItemState();
+}
 
+class _RestaurantItemState extends State<RestaurantItem> {
+  String imageUrl = "";
+
+  @override
+  void initState() {
+    super.initState();
+    fetchImage();
+  }
+
+  Future<void> fetchImage() async {
+    final response = await http.get(
+      Uri.parse("https://api.pexels.com/v1/search?query=restaurant"),
+      headers: {
+        "Authorization": "viD7QtzoH3bvBnklP2VQIZYycAJ9gfMKO5jF0SwMD9kYogRCg8jZdX5j",
+      },
+    );
+
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+      setState(() {
+        imageUrl = data['photos'][widget.index % data['photos'].length]['src']['large'];
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
-      elevation: 4,
+      margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+      elevation: 5,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Display Image
+          // Full-Width Image
           ClipRRect(
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(12.0),
-              topRight: Radius.circular(12.0),
+              topLeft: Radius.circular(16.0),
+              topRight: Radius.circular(16.0),
             ),
-            child: provider.isLoading
-                ? Container(
+            child: imageUrl.isNotEmpty
+                ? SizedBox(
+              width: double.infinity, // Full width
+              height: 200, // Increased height for better visibility
+              child: Image.network(imageUrl, fit: BoxFit.cover),
+            )
+                : Container(
               width: double.infinity,
-              height: 200, // Increased size
+              height: 200,
               color: Colors.grey[300],
               child: Center(child: CircularProgressIndicator()),
-            )
-                : Image.network(
-              provider.restaurantImages.isNotEmpty
-                  ? provider.restaurantImages[index % provider.restaurantImages.length]
-                  : "https://via.placeholder.com/400",
-              width: double.infinity,
-              height: 200, // Increased size
-              fit: BoxFit.cover,
             ),
           ),
-          // Restaurant Name
+          // Restaurant Details
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'Restaurant ${index + 1}',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-          ),
-          // Cuisine and Price
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Text(
-              'Cuisine Type - \$ Price Range',
-              style: TextStyle(color: Colors.grey[700]),
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Restaurant ${widget.index + 1}',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 6),
+                Text(
+                  'Cuisine Type - \$ Price Range',
+                  style: TextStyle(color: Colors.grey[700], fontSize: 16),
+                ),
+              ],
             ),
           ),
         ],
