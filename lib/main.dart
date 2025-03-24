@@ -4,7 +4,9 @@ import 'package:bite_saver/pages/Pop_Page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'Provider/Deals_Provider.dart';
-void main() {
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+void main() async{
+  await dotenv.load(fileName: "credentials.env");
   runApp(
     MultiProvider(
       providers: [
@@ -18,6 +20,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

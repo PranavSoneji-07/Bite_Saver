@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class RestaurantItem extends StatefulWidget {
   final int index;
@@ -22,9 +23,9 @@ class _RestaurantItemState extends State<RestaurantItem> {
 
   Future<void> fetchImage() async {
     final response = await http.get(
-      Uri.parse("https://api.pexels.com/v1/search?query=restaurant"),
+      Uri.parse(dotenv.env['PICSLINK']!),
       headers: {
-        "Authorization": "viD7QtzoH3bvBnklP2VQIZYycAJ9gfMKO5jF0SwMD9kYogRCg8jZdX5j",
+        "Authorization": dotenv.env['PICS']!,
       },
     );
 

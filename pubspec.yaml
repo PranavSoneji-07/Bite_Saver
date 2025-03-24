@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   google_maps_flutter: ^2.11.0
   geolocator: ^10.1.0  # For user location
+  flutter_dotenv: ^5.2.1
 
 dev_dependencies:
   flutter_test:
@@ -59,6 +60,7 @@ flutter:
     - assets/download.gif
     - assets/credentials.txt
     - assets/deal1.jpg
+    - credentials.env
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

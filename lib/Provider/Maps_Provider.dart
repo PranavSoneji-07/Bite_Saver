@@ -2,22 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class MapsProvider extends ChangeNotifier {
   List<Map<String, dynamic>> _restaurants = [];
   List<Map<String, dynamic>> get restaurants => _restaurants;
 
-  Set<Marker> _markers = {}; // Store markers for the map
+  Set<Marker> _markers = {};
   Set<Marker> get markers => _markers;
 
   Future<void> fetchNearbyRestaurants(LatLng userLocation) async {
-    const apiKey = "YOUR_GOOGLE_MAPS_API_KEY"; // Replace with your API key
+    var apiKey = dotenv.env['KEY'];
     final url = Uri.parse(
-      "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
-          "?location=${userLocation.latitude},${userLocation.longitude}"
-          "&radius=3000"
-          "&type=restaurant"
-          "&key=$apiKey",
+          "${dotenv.env['MAPS']}?location=${userLocation.latitude},${userLocation.longitude}&radius=3000&type=restaurant&key=$apiKey",
     );
 
     final response = await http.get(url);
