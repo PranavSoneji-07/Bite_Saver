@@ -35,7 +35,7 @@ class TopDealsProvider extends ChangeNotifier {
     }
 
     _isLoading = false;
-    notifyListeners(); // Notify widgets to rebuild
+    notifyListeners();
   }
 
 }
