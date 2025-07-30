@@ -18,14 +18,13 @@ class MapsProvider extends ChangeNotifier {
     );
 
     final response = await http.get(url);
-    print("API Response: ${response.body}"); // Debugging
+    print("API Response: ${response.body}");
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       if (data["status"] == "OK") {
         _restaurants = data["results"];
 
-        // **Convert Restaurants to Markers**
         _markers.clear();
         for (var restaurant in _restaurants) {
           final lat = restaurant["geometry"]["location"]["lat"];

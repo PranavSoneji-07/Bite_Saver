@@ -11,7 +11,7 @@ class GoogleMapWidget extends StatefulWidget {
 
 class _GoogleMapWidgetState extends State<GoogleMapWidget> {
   GoogleMapController? mapController;
-  LatLng _defaultPosition = LatLng(19.0760, 72.8777); // Mumbai, India
+  LatLng _defaultPosition = LatLng(19.0760, 72.8777);
   LatLng? _initialPosition;
 
   @override
@@ -29,7 +29,6 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
       _initialPosition = LatLng(position.latitude, position.longitude);
     });
 
-    // Fetch restaurants near user location
     Provider.of<MapsProvider>(context, listen: false)
         .fetchNearbyRestaurants(_initialPosition!);
   }
@@ -46,7 +45,7 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
         target: _initialPosition!,
         zoom: 14,
       ),
-      markers: mapsProvider.markers, // **Display restaurant markers**
+      markers: mapsProvider.markers,
       myLocationEnabled: true,
       myLocationButtonEnabled: true,
     );

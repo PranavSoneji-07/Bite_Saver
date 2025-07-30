@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 class LinesPicker extends StatefulWidget {
-  final Function(String) onLineChanged; // Callback function
+  final Function(String) onLineChanged;
 
   const LinesPicker({required this.onLineChanged, super.key});
 
@@ -32,10 +32,9 @@ class _LinesPickerState extends State<LinesPicker> {
     super.initState();
     timer = Timer.periodic(Duration(seconds: 1, milliseconds: 100), (timer) {
       String newLine = lines[random.nextInt(10) +1 ];
-      widget.onLineChanged(newLine); // Send updated line to Pop_Up
+      widget.onLineChanged(newLine);
     });
 
-    // Stop after 4 seconds (2 updates)
     Future.delayed(Duration(seconds: 6), () {
       timer?.cancel();
     });
@@ -49,6 +48,6 @@ class _LinesPickerState extends State<LinesPicker> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(); // This widget doesn't display anything
+    return SizedBox();
   }
 }
